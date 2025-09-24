@@ -1,15 +1,18 @@
 "use client";
 
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import InputField from "./ui/InputField";
 import { chainsToTSender, tsenderAbi, erc20Abi } from "@/constants";
 import { useAccount, useChainId, useConfig, useReadContract } from "wagmi";
 import { readContract } from "@wagmi/core";
 
+import { calculateTotal } from "@/utils/calculateTotal/calculateTotal";
+
 export default function AirdropForm() {
   const [tokenAddress, setTokenAddress] = useState("");
   const [recipients, setRecipients] = useState("");
   const [amounts, setAmounts] = useState("");
+  const total: number = useMemo(() => calculateTotal(amounts), [amounts]);
 
   const chainId = useChainId();
   const config = useConfig(); // Required for core actions like readContract
