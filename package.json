@@ -21,6 +21,8 @@
     "wagmi": "^2.16.9"
   },
   "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@synthetixio/synpress": "^4.1.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
